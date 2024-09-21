@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import ActionBanner from "~/components/ActionBanner";
+import CheckInstallation from "~/components/CheckInstallation";
+import InstallationSnippet from "~/components/InstallationSnippet";
 import { STEP } from "~/constants";
 
 type Props = {
@@ -31,7 +33,10 @@ const Page: React.FC<Props> = ({ name }) => {
         isDisabled={false}
         isExpanded={currentStep === STEP.INSTALL}
         handleExpand={handleCurrentStep(STEP.INSTALL)}
-      />
+      >
+        <InstallationSnippet userId="tanaydpatel" />
+        <CheckInstallation />
+      </ActionBanner>
       <ActionBanner
         title="Test Surface Tag Events"
         subTitle="Test if the Surface Tag is properly emitting events."
