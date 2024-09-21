@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ActionBanner from "~/components/ActionBanner";
 import CheckInstallation from "~/components/CheckInstallation";
 import InstallationSnippet from "~/components/InstallationSnippet";
-import { STEP } from "~/constants";
+import { STEP, TEST_STAGE } from "~/constants";
 
 type Props = {
   name: string;
@@ -21,7 +21,7 @@ const Page: React.FC<Props> = ({ name }) => {
 
   return (
     <div>
-      <h1 className="text-text-black text-[32px] font-semibold leading-9">
+      <h1 className="text-[32px] font-semibold leading-9 text-text-black">
         Getting started
       </h1>
       <hr className="mb-10 mt-3 border-t border-gray-300" />
@@ -35,7 +35,13 @@ const Page: React.FC<Props> = ({ name }) => {
         handleExpand={handleCurrentStep(STEP.INSTALL)}
       >
         <InstallationSnippet userId="tanaydpatel" />
-        <CheckInstallation />
+        <CheckInstallation
+          status={TEST_STAGE.FAILED}
+          handleConnectionTest={() => {
+            alert("test");
+          }}
+          isLoading={false}
+        />
       </ActionBanner>
       <ActionBanner
         title="Test Surface Tag Events"

@@ -8,3 +8,10 @@ export const STEP = {
   INSTALL: "install",
   TEST: "test",
 };
+
+export const TEST_STAGE = {
+  LOADING: "loading",
+  FAILED: "failed",
+  SUCCESS: "success",
+  START: "start",
+};
