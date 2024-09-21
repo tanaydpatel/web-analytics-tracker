@@ -25,6 +25,15 @@ const InstallationSnippet: React.FC<InstallationSnippetProps> = ({
 </script>
 `;
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(snippet);
+      alert("Snippet copied to clipboard!");
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
+
   return (
     <div className="flex w-full items-start justify-between rounded-xl border-2 border-[#e2e4e9] bg-[#f9f9f9] p-5">
       <pre>
@@ -32,9 +41,7 @@ const InstallationSnippet: React.FC<InstallationSnippetProps> = ({
       </pre>
       <Button
         label="Copy snippet"
-        onClick={() => {
-          alert("copied");
-        }}
+        onClick={copyToClipboard}
         isDisabled={false}
       />
     </div>
