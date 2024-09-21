@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ActionBanner from "~/components/ActionBanner";
 import CheckInstallation from "~/components/CheckInstallation";
 import InstallationSnippet from "~/components/InstallationSnippet";
+import TestIncomingEvents from "~/components/TestIncomingEvents";
 import { STEP, TEST_STAGE } from "~/constants";
 
 type Props = {
@@ -48,10 +49,43 @@ const OnboardingSteps: React.FC<Props> = ({ name }) => {
         subTitle="Test if the Surface Tag is properly emitting events."
         buttonLabel="Test tag"
         status="pending"
-        isDisabled={true}
+        isDisabled={false}
         isExpanded={currentStep === STEP.TEST}
         handleExpand={handleCurrentStep(STEP.TEST)}
-      />
+      >
+        <TestIncomingEvents
+          events={[
+            {
+              event: "Track",
+              visitor: "37d272f6-877b-47c6-98e5-51561",
+              metadata: "{}",
+              createdAt: "9/15/2024, 5:08:56 PM",
+            },
+            {
+              event: "Page",
+              visitor: "e7ef515a-7a5b-4949-9f28-8ae34",
+              metadata: '{"page_url": "https://withsurface.com/page-1"}',
+              createdAt: "9/15/2024, 5:09:35 PM",
+            },
+            {
+              event: "Identity",
+              visitor: "42d467c8-3bd1-4519-9ae6-bfb0",
+              metadata: '{"user_id": "42d467c8-3bd1-4519-9ae6-bfb00adcc01c"}',
+              createdAt: "9/15/2024, 5:12:19 PM",
+            },
+            {
+              event: "Click",
+              visitor: "aa731c78-c4e0-4e4f-b515-65259",
+              metadata: '{"element_id": "button-element"}',
+              createdAt: "9/15/2024, 5:17:35 PM",
+            },
+          ]}
+          handleEventTest={() => {
+            alert("test");
+          }}
+          isLoading={false}
+        />
+      </ActionBanner>
     </div>
   );
 };

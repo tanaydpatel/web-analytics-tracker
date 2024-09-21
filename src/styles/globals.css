@@ -34,3 +34,9 @@ html {
   font-weight: bold;
   font-style: normal;
 }
+
+.table-head > th,
+.table-head tr {
+  font-weight: 500 !important;
+  text-align: left;
+}
