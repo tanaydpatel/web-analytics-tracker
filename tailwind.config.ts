@@ -12,7 +12,7 @@ export default {
       colors: {
         "bg-light-gray": "#F9F9F9",
         "text-black": "#383f50",
-        "text-light-gray": "#383f5080",
+        "text-light-gray": "#383f5085",
       },
     },
   },

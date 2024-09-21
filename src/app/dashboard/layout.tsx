@@ -72,7 +72,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         </div>
       </aside>
 
-      <div className="p-4 sm:ml-64">
+      <div className="px-14 py-8 sm:ml-64">
         <div className="flex-1 overflow-auto">
           <main>{children}</main>
         </div>
