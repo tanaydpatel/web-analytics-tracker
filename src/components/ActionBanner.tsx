@@ -1,11 +1,12 @@
 "use client";
 
-import React, { PropsWithChildren, useEffect, useState } from "react";
-import Button from "./Button";
+import React, { type PropsWithChildren } from "react";
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
 } from "@heroicons/react/20/solid";
+
+import Button from "./Button";
 import { STATUS } from "~/constants";
 
 interface ActionBannerProps extends PropsWithChildren {
@@ -45,18 +46,20 @@ const ActionBanner: React.FC<ActionBannerProps> = ({
           </div>
           <div className="ml-6 flex h-full flex-col items-start justify-center">
             <p className="text-lg font-medium text-black">{title}</p>
-            <p className="text-text-light-gray text-base leading-5 tracking-[1px]">
+            <p className="text-base leading-5 tracking-[1px] text-text-light-gray">
               {subTitle}
             </p>
           </div>
         </div>
-        <div className="flex h-full flex-col items-center justify-center">
-          <Button
-            isDisabled={isDisabled}
-            label={buttonLabel}
-            onClick={handleExpand}
-          />
-        </div>
+        {!isExpanded && (
+          <div className="flex h-full flex-col items-center justify-center">
+            <Button
+              isDisabled={isDisabled}
+              label={buttonLabel}
+              onClick={handleExpand}
+            />
+          </div>
+        )}
       </div>
       {isExpanded && <div className="mt-3">{children}</div>}
     </div>

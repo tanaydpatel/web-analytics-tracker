@@ -1,10 +1,10 @@
 "use client";
 
 import {
-  FC,
-  ForwardRefExoticComponent,
-  PropsWithChildren,
-  SVGProps,
+  type FC,
+  type ForwardRefExoticComponent,
+  type PropsWithChildren,
+  type SVGProps,
   useState,
 } from "react";
 
@@ -23,6 +23,7 @@ import {
 export default function DashboardLayout({ children }: PropsWithChildren) {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
+  // for mobile sidebar
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -41,7 +42,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
     <>
       <aside
         id="logo-sidebar"
-        className="z-1 bg-bg-light-gray fixed left-0 top-0 h-screen w-64 -translate-x-full px-5 py-6 transition-transform sm:translate-x-0"
+        className="z-1 fixed left-0 top-0 h-screen w-64 -translate-x-full bg-bg-light-gray px-5 py-6 transition-transform sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="flex h-full flex-col overflow-y-auto">
@@ -53,9 +54,9 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
             />
           </a>
           <hr className="my-4 border-t border-gray-300" />
-          <button className="text-text-black m-0 flex flex-row items-center justify-between px-4 text-base font-semibold">
+          <button className="m-0 flex flex-row items-center justify-between px-4 text-base font-semibold text-text-black">
             <div className="flex flex-row items-center">
-              <UserIcon className="text-text-black h-4 w-4" />{" "}
+              <UserIcon className="h-4 w-4 text-text-black" />{" "}
               <span className="ml-3 inline-block">My workspace</span>
             </div>
             <ChevronDownIcon className="h-4 w-4 text-gray-500" />
@@ -89,8 +90,8 @@ interface SidebarOptionProps {
 const SidebarOption: FC<SidebarOptionProps> = ({ icon: Icon, name }) => {
   return (
     <button className="mb-5 flex flex-row items-center px-4">
-      <Icon className="text-text-light-gray h-5 w-5" />{" "}
-      <span className="text-text-light-gray ml-3 inline-block">{name}</span>
+      <Icon className="h-5 w-5 text-text-light-gray" />{" "}
+      <span className="ml-3 inline-block text-text-light-gray">{name}</span>
     </button>
   );
 };

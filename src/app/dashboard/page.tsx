@@ -10,7 +10,7 @@ type Props = {
   name: string;
 };
 
-const Page: React.FC<Props> = ({ name }) => {
+const OnboardingSteps: React.FC<Props> = ({ name }) => {
   const [currentStep, setCurrentStep] = useState<string | null>(null);
 
   const handleCurrentStep = (step: string) => {
@@ -56,4 +56,4 @@ const Page: React.FC<Props> = ({ name }) => {
   );
 };
 
-export default Page;
+export default OnboardingSteps;
