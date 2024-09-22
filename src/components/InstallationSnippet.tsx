@@ -36,9 +36,9 @@ const InstallationSnippet: React.FC<InstallationSnippetProps> = ({
       j = d.createElement(s),
       dl = l != 'surface' ? '&l=' + l : '';
     j.async = true;
-    j.src = 'https://www.surface-analytics.com/tag.js?id=${userId}' + i + dl;
+    j.src = 'http://www.surface-analytics.com/the-tracking-script.js?id=' + i + dl;
     f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'surface', 'SURFACE_TAG_ID');
+  })(window, document, 'script', 'surface', '${userId}');
 </script>
 `;
 
