@@ -7,11 +7,7 @@ import InstallationSnippet from "~/components/InstallationSnippet";
 import TestIncomingEvents from "~/components/TestIncomingEvents";
 import { STEP, TEST_STAGE } from "~/constants";
 
-type Props = {
-  name: string;
-};
-
-const OnboardingSteps: React.FC<Props> = ({ name }) => {
+const OnboardingSteps: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<string | null>(null);
 
   const handleCurrentStep = (step: string) => {
