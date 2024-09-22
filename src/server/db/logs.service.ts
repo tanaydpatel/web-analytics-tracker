@@ -3,12 +3,18 @@
 
 import { db } from "./db";
 
-interface LogPayload {
+export interface LogPayload {
   type: string;
   userId: string;
   timestamp: Date;
   data: any;
   trackingId: string;
+}
+
+export interface LogFilter {
+  type?: string;
+  timestamp?: { gt: Date };
+  trackingId?: string;
 }
 
 /**
@@ -45,25 +51,15 @@ async function addLog(payload: LogPayload): Promise<void> {
  * @param trackingId - The tracking ID to filter logs.
  * @returns Promise<LogPayload[]> - A promise that resolves to an array of log entries.
  */
-async function readLogs(trackingId: string): Promise<LogPayload[]> {
+async function readLogs(filters: LogFilter): Promise<LogPayload[]> {
   try {
     const logs = await db.log.findMany({
-      where: {
-        trackingId: trackingId,
-      },
+      where: filters,
     });
-    console.log("Log entries retrieved successfully");
     return logs;
   } catch (error: unknown) {
-    // Handle Prisma-specific errors
-    if (error instanceof Error) {
-      console.error("Error retrieving log entries:", error.message);
-    } else {
-      console.error("Unknown error retrieving log entries");
-    }
+    console.error("Error retrieving log entries", error);
     return [];
-  } finally {
-    await db.$disconnect();
   }
 }
 
