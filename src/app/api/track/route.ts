@@ -20,15 +20,22 @@ export async function POST(request: NextRequest) {
     }
 
     const { type, userId, timestamp, data, trackingId } = body;
-    await addLog({
+    const success = await addLog({
       type,
       userId,
       timestamp: new Date(timestamp),
       data,
       trackingId,
     });
-    return NextResponse.json({ message: "Recorded" }, { status: 200 });
+    if (success) {
+      return NextResponse.json({ message: "Recorded" }, { status: 200 });
+    } else {
+      throw new Error("Error adding log entry");
+    }
   } catch (error) {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    return NextResponse.json(
+      { error: (error as Error).message },
+      { status: 400 },
+    );
   }
 }

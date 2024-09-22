@@ -20,11 +20,11 @@ export interface LogFilter {
 /**
  * Add a log entry to the database.
  * @param payload - The log data to be inserted.
- * @returns Promise<void> - A promise that resolves when the log entry is added.
+ * @returns Promise<boolean> - A promise that resolves when the log entry is added.
  */
-async function addLog(payload: LogPayload): Promise<void> {
+async function addLog(payload: LogPayload): Promise<boolean> {
   try {
-    await db.log.create({
+    const status = await db.log.create({
       data: {
         type: payload.type,
         userId: payload.userId ?? "",
@@ -33,16 +33,14 @@ async function addLog(payload: LogPayload): Promise<void> {
         trackingId: payload.trackingId,
       },
     });
-    console.log("Log entry added successfully");
-  } catch (error: unknown) {
-    // Handle Prisma-specific errors
-    if (error instanceof Error) {
-      console.error("Error adding log entry:", error.message);
-    } else {
-      console.error("Unknown error adding log entry");
+    if (status.id) {
+      console.log("Log entry added successfully", status);
+      return true;
     }
-  } finally {
-    await db.$disconnect();
+    throw new Error("Error adding log entry");
+  } catch (error) {
+    console.error((error as Error).message, error);
+    return false;
   }
 }
 
@@ -57,7 +55,7 @@ async function readLogs(filters: LogFilter): Promise<LogPayload[]> {
       where: filters,
     });
     return logs;
-  } catch (error: unknown) {
+  } catch (error) {
     console.error("Error retrieving log entries", error);
     return [];
   }
