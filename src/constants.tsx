@@ -15,3 +15,12 @@ export const TEST_STAGE = {
   SUCCESS: "success",
   START: "start",
 };
+
+export const EVENTS = {
+  INIT: "init",
+  PAGE: "page",
+  CLICKED: "click",
+  TRACK: "track",
+  EMAIL: "email",
+  FORM: "form",
+};
