@@ -10,11 +10,14 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Log {
+    id         String   @id @default(uuid())
+    trackingId String
+    type       String
+    userId     String
+    timestamp  DateTime
+    data       Json
 
-    @@index([name])
+    @@index([trackingId])
+    @@index([userId])
 }
