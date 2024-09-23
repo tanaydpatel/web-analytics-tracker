@@ -30,6 +30,39 @@ export default function BlogPage() {
               providing a list of all the logs and metadata with timestamps for
               detailed analytics.
             </p>
+            <h2 className="mt-8 text-2xl font-bold">Live Demo</h2>
+            <ul className="list-inside list-disc">
+              <li>
+                Go to:{" "}
+                <a
+                  href="https://web-analytics-custom-integration.vercel.app/"
+                  className="text-blue-500 hover:underline"
+                >
+                  web-analytics-custom-integration.vercel.app
+                </a>
+              </li>
+              <li>Redirect to dashboard</li>
+              <li>
+                Enter <code>tanay</code> as trackingId
+              </li>
+              <li>
+                Open demo{" "}
+                <a
+                  href="https://web-analytics-custom-integration.vercel.app/tracking-page.html"
+                  className="text-blue-500 hover:underline"
+                >
+                  tracking page
+                </a>
+              </li>
+              <li>
+                Go back to dashboard and see the live events populate in events
+                table.
+              </li>
+              <li>
+                You can also copy the personalized script to track your own page
+                with your own <code>trackingId</code>.
+              </li>
+            </ul>
             <h2 className="mt-8 text-2xl font-bold">Completed Features</h2>
             <h3 className="mt-4 text-xl font-semibold">Part 1:</h3>
             <ul className="list-inside list-disc">

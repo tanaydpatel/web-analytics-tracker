@@ -2,11 +2,21 @@
 
 This project focuses on the onboarding flow of integrating a customized "analytics" script that can track user behavior on a web platform.
 
+## Live demo
+
+- Go to: [web-analytics-custom-integration.vercel.app](https://web-analytics-custom-integration.vercel.app/)
+- Redirect to dashboard
+- Enter `tanay` as trackingId
+- Open demo [tracking page](https://web-analytics-custom-integration.vercel.app/tracking-page.html)
+- Go back to dashboard and see the live events populate in events table.
+- You can also copy the personalized script totrack your own page with your own `trackingId`.
+
 ## How to setup
 
-- Run `npm i`
+- Run `pnpm i`
 - Update the `.env` file with `DATABASE_URL`
-- pnpm run dev
+- Run `pnpm run db:generate`
+- Run `pnpm run dev`
 
 ### Custom Analytics Script
 
