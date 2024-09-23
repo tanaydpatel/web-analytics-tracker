@@ -30,9 +30,9 @@ const ActionBanner: React.FC<ActionBannerProps> = ({
   children,
 }) => {
   return (
-    <div className="mb-8 rounded-lg border-2 border-[#ebedf3] p-6 shadow-[2px_2px_4px_3px_rgba(0,0,0,0.03)]">
-      <div className="flex h-14 w-full flex-row items-start justify-between gap-6">
-        <div className="flex h-full flex-row">
+    <div className="mb-8 rounded-lg border-2 border-[#ebedf3] p-2 shadow-[2px_2px_4px_3px_rgba(0,0,0,0.03)] transition-transform sm:p-6">
+      <div className="flex h-max w-full flex-col items-start justify-between gap-6 sm:h-14 sm:flex-row">
+        <div className="flex h-full flex-row items-center">
           <div className="flex h-full flex-col items-center justify-center">
             {status === "error" && (
               <ExclamationCircleIcon className="h-8 w-8 text-red-600" />
@@ -52,7 +52,7 @@ const ActionBanner: React.FC<ActionBannerProps> = ({
           </div>
         </div>
         {!isExpanded && (
-          <div className="flex h-full flex-col items-center justify-center">
+          <div className="flex h-full w-full flex-col items-end justify-center sm:w-auto sm:items-center">
             <Button
               isDisabled={isDisabled}
               label={buttonLabel}

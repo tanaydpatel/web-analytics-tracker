@@ -10,6 +10,8 @@ import {
 
 import {
   ArrowPathRoundedSquareIcon,
+  Bars3BottomLeftIcon,
+  Bars3CenterLeftIcon,
   ChevronDownIcon,
   Cog6ToothIcon,
   FolderIcon,
@@ -19,9 +21,10 @@ import {
   RectangleGroupIcon,
   SquaresPlusIcon,
   UserIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 export default function DashboardLayout({ children }: PropsWithChildren) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
 
   // for mobile sidebar
   const toggleSidebar = () => {
@@ -40,20 +43,31 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
 
   return (
     <>
+      <button
+        onClick={toggleSidebar}
+        className="absolute left-3 top-9 sm:hidden"
+      >
+        <Bars3BottomLeftIcon className="h-8 w-8 text-gray-500" />
+      </button>
       <aside
         id="logo-sidebar"
-        className="z-1 fixed left-0 top-0 h-screen w-[281px] -translate-x-full rounded-[0px_20px_20px_0px] bg-bg-light-gray px-5 py-6 shadow-[0px_2px_3px_5px_#e8e8e8] transition-transform sm:translate-x-0"
+        className={`z-1 xs:w-full fixed left-0 top-0 h-screen w-[281px] -translate-x-full rounded-[0px_20px_20px_0px] bg-bg-light-gray px-5 py-6 shadow-[0px_2px_3px_5px_#e8e8e8] transition-transform sm:translate-x-0 ${isCollapsed ? "" : "translate-x-0"}`}
         aria-label="Sidebar"
       >
         <div className="flex h-full flex-col justify-between overflow-y-auto">
           <div>
-            <a href="https://www.tanaypatel.dev">
-              <img
-                src="/logo.svg"
-                className="me-3 h-6 sm:h-7"
-                alt="Surface Labs Logo"
-              />
-            </a>
+            <div className="flex flex-row justify-between">
+              <a href="https://www.tanaypatel.dev">
+                <img
+                  src="/logo.svg"
+                  className="me-3 h-6 sm:h-7"
+                  alt="Surface Labs Logo"
+                />
+              </a>
+              <button onClick={toggleSidebar} className="ml-12 sm:hidden">
+                <XMarkIcon className="h-8 w-8 text-gray-500" />
+              </button>
+            </div>
             <hr className="my-4 border-t border-gray-300" />
             <button className="m-0 flex flex-row items-center justify-between px-4 text-base font-semibold text-text-black">
               <div className="flex flex-row items-center">
@@ -88,7 +102,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         </div>
       </aside>
 
-      <div className="px-14 py-8 sm:ml-[281px]">
+      <div className="px-4 py-8 sm:ml-[281px] sm:px-14">
         <div className="flex-1 overflow-auto">
           <main>{children}</main>
         </div>

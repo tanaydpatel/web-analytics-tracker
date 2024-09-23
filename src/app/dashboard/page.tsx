@@ -111,10 +111,9 @@ const OnboardingSteps: React.FC = () => {
         trackingId={trackingId}
       />
       <div>
-        <h1 className="text-[32px] font-semibold leading-9 text-text-black">
+        <h1 className="ml-10 text-[32px] font-semibold leading-9 text-text-black sm:ml-0">
           Getting started
         </h1>
-        {!!pollingInterval ? "asd" : "aaa"}
         <hr className="mb-10 mt-3 border-t border-gray-300" />
         <ActionBanner
           title="Install Surface Tag on your site"
