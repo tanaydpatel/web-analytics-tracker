@@ -1,29 +1,57 @@
-# Create T3 App
+# Project Overview
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This project focuses on the onboarding flow of integrating a customized "analytics" script that can track user behavior on a web platform.
 
-## What's next? How do I make an app with this?
+## How to setup
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- Run `npm i`
+- Update the `.env` file with `DATABASE_URL`
+- pnpm run dev
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+### Custom Analytics Script
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+The custom analytics script is coupled with a tracking ID which is associated with a customer account. For every user, it assigns a `userId` and stores it in `localStorage`. The script tracks the following events:
 
-## Learn More
+- Initialize
+- Click
+- Page view
+- Form submission
+- Email
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+All these events are stored in the database with a unique ID for each event. Later, all these events can be fetched for a specific tracking ID, providing a list of all the logs and metadata with timestamps for detailed analytics.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### Completed Features
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+#### Part 1:
 
-## How do I deploy this?
+- Implemented Figma mocks with Next.js App Router
+- Implemented the sidebar view
+- Made the table in the Event Testing view update in real-time as events come in (used polling)
+- Added syntax highlighting to the code snippet preview
+- Responsive design
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+#### Part 2:
+
+- Tracking events
+- Script initialization
+  - Track page view
+  - Track email entered
+  - Track click on page element
+
+When emitting the events to the backend, the following metadata is included:
+
+- Details relevant to the event (e.g., element ID)
+- Visitor ID
+
+\*Note: You will need to determine how to uniquely identify the page visitor so that multiple events sent by the same user can be grouped together later on.
+
+### Tech Stack
+
+- Typescript
+- Next.js App Router
+  - Front End
+  - Serverless Backend
+- Vercel (hosting)
+- Tailwind CSS
+- PostgreSQL backend
+- Prisma
