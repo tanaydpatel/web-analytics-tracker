@@ -13,7 +13,7 @@ interface ActionBannerProps extends PropsWithChildren {
   title: string;
   subTitle: string;
   buttonLabel: string;
-  status: "pending" | "error" | "completed";
+  status: string;
   isDisabled: boolean;
   isExpanded: boolean;
   handleExpand: () => void;

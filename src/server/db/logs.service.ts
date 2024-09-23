@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import { db } from "./db";
 
 export interface LogPayload {
@@ -9,6 +6,7 @@ export interface LogPayload {
   timestamp: Date;
   data: any;
   trackingId: string;
+  id: string;
 }
 
 export interface LogFilter {
@@ -49,10 +47,18 @@ async function addLog(payload: LogPayload): Promise<boolean> {
  * @param trackingId - The tracking ID to filter logs.
  * @returns Promise<LogPayload[]> - A promise that resolves to an array of log entries.
  */
-async function readLogs(filters: LogFilter): Promise<LogPayload[]> {
+async function readLogs({
+  filters,
+  skip,
+}: {
+  filters: LogFilter;
+  skip?: number;
+}): Promise<LogPayload[]> {
   try {
     const logs = await db.log.findMany({
       where: filters,
+      orderBy: { timestamp: "desc" },
+      skip: skip,
     });
     return logs;
   } catch (error) {

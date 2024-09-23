@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./Button";
-import { TEST_STAGE } from "~/constants";
+import { STATUS } from "~/constants";
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
@@ -9,30 +9,30 @@ import {
 
 interface CheckInstallationProps {
   status: string;
-  handleConnectionTest: () => void;
+  handleInstallationTest: () => void;
   isLoading: boolean;
 }
 
 const CheckInstallation: React.FC<CheckInstallationProps> = ({
   status,
-  handleConnectionTest,
+  handleInstallationTest,
   isLoading,
 }) => {
   return (
     <>
-      {status === TEST_STAGE.SUCCESS && (
+      {status === STATUS.COMPLETED && (
         <div className="mt-5 flex w-full flex-row items-center justify-start bg-green-100 px-2 py-1.5">
           <CheckCircleIcon className="h-4 w-4 text-green-600" />
           <p className="ml-2 text-sm">Connected successfully!</p>
         </div>
       )}
-      {(status === TEST_STAGE.LOADING || isLoading) && (
+      {(status === STATUS.LOADING || isLoading) && (
         <div className="mt-5 flex w-full flex-row items-center justify-start bg-blue-100 px-2 py-1.5">
           <InformationCircleIcon className="h-4 w-4 text-blue-600" />
           <p className="ml-2 text-sm">Checking for tag...</p>
         </div>
       )}
-      {status === TEST_STAGE.FAILED && (
+      {status === STATUS.ERROR && (
         <div className="mt-5 flex w-full flex-row items-center justify-start bg-red-100 px-2 py-1.5">
           <ExclamationCircleIcon className="h-6 w-6 text-red-600" />
           <div className="ml-4">
@@ -56,12 +56,14 @@ const CheckInstallation: React.FC<CheckInstallationProps> = ({
       )}
       <div className="mt-5 flex w-full flex-row justify-end">
         <Button
-          onClick={handleConnectionTest}
+          onClick={handleInstallationTest}
           isDisabled={isLoading}
           label={
-            [TEST_STAGE.START, TEST_STAGE.LOADING].includes(status)
-              ? "Test connection"
-              : "Try again"
+            [STATUS.PENDING, STATUS.LOADING].includes(status)
+              ? "Test Installation"
+              : STATUS.COMPLETED
+                ? "Next step"
+                : "Try again"
           }
         />
       </div>

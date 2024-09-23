@@ -42,7 +42,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
     <>
       <aside
         id="logo-sidebar"
-        className="z-1 fixed left-0 top-0 h-screen w-64 -translate-x-full bg-bg-light-gray px-5 py-6 transition-transform sm:translate-x-0"
+        className="z-1 fixed left-0 top-0 h-screen w-[281px] -translate-x-full rounded-[0px_20px_20px_0px] bg-bg-light-gray px-5 py-6 shadow-[0px_2px_3px_5px_#e8e8e8] transition-transform sm:translate-x-0"
         aria-label="Sidebar"
       >
         <div className="flex h-full flex-col justify-between overflow-y-auto">
@@ -88,7 +88,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         </div>
       </aside>
 
-      <div className="px-14 py-8 sm:ml-64">
+      <div className="px-14 py-8 sm:ml-[281px]">
         <div className="flex-1 overflow-auto">
           <main>{children}</main>
         </div>

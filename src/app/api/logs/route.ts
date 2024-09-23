@@ -1,5 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
-import { LogFilter, LogPayload, readLogs } from "~/server/db/logs.service";
+import { type NextRequest, NextResponse } from "next/server";
+import {
+  type LogFilter,
+  type LogPayload,
+  readLogs,
+} from "~/server/db/logs.service";
 
 export async function GET(request: NextRequest) {
   try {
@@ -7,6 +11,9 @@ export async function GET(request: NextRequest) {
     const trackingId = searchParams.get("trackingId");
     const type = searchParams.get("type") ?? undefined;
     const timestamp = searchParams.get("timestamp") ?? undefined;
+    const skip = searchParams.get("skip")
+      ? parseInt(searchParams.get("skip")!)
+      : undefined;
 
     if (!trackingId) {
       throw new Error("Invalid trackingId");
@@ -16,11 +23,7 @@ export async function GET(request: NextRequest) {
     if (type) filters.type = type;
     if (timestamp) filters.timestamp = { gt: new Date(timestamp) };
 
-    const logs: LogPayload[] = await readLogs(filters);
-
-    if (!logs.length) {
-      throw new Error("No entry found");
-    }
+    const logs: LogPayload[] = await readLogs({ filters, skip });
     return NextResponse.json(logs, { status: 200 });
   } catch (error) {
     return NextResponse.json(

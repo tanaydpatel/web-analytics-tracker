@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 import React, { type CSSProperties } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -19,11 +16,11 @@ const customStyle: Record<string, CSSProperties> | undefined = {
 
 import Button from "./Button";
 interface InstallationSnippetProps {
-  userId: string;
+  trackingId: string;
 }
 
 const InstallationSnippet: React.FC<InstallationSnippetProps> = ({
-  userId,
+  trackingId,
 }) => {
   const snippet = `<script>
   (function(w, d, s, l, i) {
@@ -38,7 +35,7 @@ const InstallationSnippet: React.FC<InstallationSnippetProps> = ({
     j.async = true;
     j.src = 'http://www.surface-analytics.com/the-tracking-script.js?id=' + i + dl;
     f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'surface', '${userId}');
+  })(window, document, 'script', 'surface', '${trackingId}');
 </script>
 `;
 
