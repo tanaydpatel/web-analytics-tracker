@@ -57,7 +57,7 @@ async function readLogs({
   try {
     const logs = await db.log.findMany({
       where: filters,
-      orderBy: { timestamp: "desc" },
+      orderBy: { timestamp: "asc" },
       skip: skip,
     });
     return logs;

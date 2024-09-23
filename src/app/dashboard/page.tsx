@@ -40,7 +40,7 @@ const OnboardingSteps: React.FC = () => {
     // based on the timestamp of last fetched log
     // fetch logs after that timestamp
     let skip = 0;
-    const retyring = 0;
+    let retyring = 0;
     const fetchLogs = async () => {
       try {
         const response = await getLogs({
@@ -51,8 +51,11 @@ const OnboardingSteps: React.FC = () => {
         if (response.length > 0) {
           setLogs((prevLogs) => [...prevLogs, ...response]);
         }
-        if (retyring > 5 && pollingInterval) {
-          clearInterval(pollingInterval);
+        if (response.length === 0) {
+          retyring += 1;
+          if (retyring > 5 && pollingInterval) {
+            clearInterval(pollingInterval);
+          }
         }
       } catch (error) {
         console.error("Failed to fetch logs", error);

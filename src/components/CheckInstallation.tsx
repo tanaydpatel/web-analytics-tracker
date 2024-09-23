@@ -59,7 +59,7 @@ const CheckInstallation: React.FC<CheckInstallationProps> = ({
           onClick={handleInstallationTest}
           isDisabled={isLoading}
           label={
-            [STATUS.PENDING, STATUS.LOADING].includes(status)
+            [STATUS.PENDING, STATUS.LOADING, STATUS.ERROR].includes(status)
               ? "Test Installation"
               : STATUS.COMPLETED
                 ? "Next step"
