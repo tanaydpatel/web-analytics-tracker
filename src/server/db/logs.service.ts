@@ -6,7 +6,7 @@ export interface LogPayload {
   timestamp: Date;
   data: any;
   trackingId: string;
-  id: string;
+  id?: string;
 }
 
 export interface LogFilter {
