@@ -12,7 +12,7 @@ export default async function testInstallation({
     const logs = await axios.get(
       `${API_ENDPOINTS.LOGS}?trackingId=${trackingId}`,
     );
-    if (logs.status === 200) {
+    if (logs.status === 200 && logs.data.length > 0) {
       return true;
     }
     throw new Error();
