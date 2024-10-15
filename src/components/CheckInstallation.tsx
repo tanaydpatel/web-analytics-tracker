@@ -37,7 +37,7 @@ const CheckInstallation: React.FC<CheckInstallationProps> = ({
           <ExclamationCircleIcon className="h-6 w-6 text-red-600" />
           <div className="ml-4">
             <p className="text-black-900 text-lg">
-              We couldn&apos;t detect the Surface Tag on your website. Please
+              We couldn&apos;t detect the Analytics Tag on your website. Please
               ensure the snippet is added correctly.{" "}
             </p>
             <ul className="ml-4 list-disc text-sm text-[#656565]">

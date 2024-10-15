@@ -119,7 +119,7 @@ const OnboardingSteps: React.FC = () => {
         </h1>
         <hr className="mb-10 mt-3 border-t border-gray-300" />
         <ActionBanner
-          title="Install Surface Tag on your site"
+          title="Install Analytics Tag on your site"
           subTitle="Enable tracking and analytics."
           buttonLabel="Install tag"
           status={testStage}
@@ -135,8 +135,8 @@ const OnboardingSteps: React.FC = () => {
           />
         </ActionBanner>
         <ActionBanner
-          title="Test Surface Tag Events"
-          subTitle="Test if the Surface Tag is properly emitting events."
+          title="Test Analytics Tag Events"
+          subTitle="Test if the Analytics Tag is properly emitting events."
           buttonLabel="Test tag"
           status={logStage}
           isDisabled={!isInstallationComplete || logs.length > 0}
