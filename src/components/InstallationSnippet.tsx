@@ -26,16 +26,16 @@ const InstallationSnippet: React.FC<InstallationSnippetProps> = ({
   (function(w, d, s, l, i) {
     w[l] = w[l] || [];
     w[l].push({
-      'surface.start': new Date().getTime(),
-      event: 'surface.js'
+      'analytics.start': new Date().getTime(),
+      event: 'analytics.js'
     });
     var f = d.getElementsByTagName(s)[0],
       j = d.createElement(s),
-      dl = l != 'surface' ? '&l=' + l : '';
+      dl = l != 'analytics' ? '&l=' + l : '';
     j.async = true;
-    j.src = 'http://www.surface-analytics.com/the-tracking-script.js?id=' + i + dl;
+    j.src = 'http://www.tanay-patel-analytics.com/the-tracking-script.js?id=' + i + dl;
     f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'surface', '${trackingId}');
+  })(window, document, 'script', 'analytics', '${trackingId}');
 </script>
 `;
 

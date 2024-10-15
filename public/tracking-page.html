@@ -5,19 +5,19 @@
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
-          "surface.start": new Date().getTime(),
-          event: "surface.js",
+          "analytics.start": new Date().getTime(),
+          event: "analytics.js",
         });
         var f = d.getElementsByTagName(s)[0],
           j = d.createElement(s),
-          dl = l != "surface" ? "&l=" + l : "";
+          dl = l != "analytics" ? "&l=" + l : "";
         j.async = true;
         j.src =
           "https://web-analytics-custom-integration.vercel.app/the-tracking-script.js?id=" +
           i +
           dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "surface", "tanay");
+      })(window, document, "script", "analytics", "tanay");
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

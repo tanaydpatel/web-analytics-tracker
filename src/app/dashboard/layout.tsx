@@ -61,7 +61,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
                 <img
                   src="/logo.svg"
                   className="me-3 h-6 sm:h-7"
-                  alt="Surface Labs Logo"
+                  alt="Analytics Labs Logo"
                 />
               </a>
               <button onClick={toggleSidebar} className="ml-12 sm:hidden">
